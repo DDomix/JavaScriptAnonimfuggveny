@@ -6,6 +6,19 @@ class Szazlabu{
     toString(){
         return this.#labakszama+ " lábú százlábú";
     }
+
+}
+console.log(new Szazlabu(99).toString());
+function labakbolszazlabu(labakTomb) {
+    return labakTomb.map(szamok=> new Szazlabu(szam));
+}
+function szazlabumegjelenites(id,szazlabuk) {
+    let elem=document.getElementById(id);
+    szazlabuk.forEach(e => {
+        let li=document.createElement('li');
+        li.textContent=e.toString();
+        elem.appendChild(li);
+    });
 }
 document.addEventListener("DOMContentLoaded",()=>{
     let szamok=[];
@@ -23,4 +36,7 @@ document.addEventListener("DOMContentLoaded",()=>{
         let szam=ParseInt(document.getElementById("szam").value);
         szamok.push(szam);
     })
+    document.getElementById("hozzaad").addEventListener("click",()=>{
+        szazlabumegjelenites("lista".labakbolszazlabu(szamok));
+    });
 })
